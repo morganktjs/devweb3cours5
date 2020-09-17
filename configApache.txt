@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+	ServerName devweb3cours5.com
+	DocumentRoot "${INSTALL_DIR}/devweb3_cours5"
+	RewriteEngine on
+ 	RewriteCond %{HTTP_HOST} ^devweb3cours5.com
+	RewriteCond %{REQUEST_URI} !^public/.* [NC]	
+	RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ /application/index.php?p=$1
+	<Directory  "${INSTALL_DIR}/www/devweb3cours5/">
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+	</Directory>
+</VirtualHost>

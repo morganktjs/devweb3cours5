@@ -10,16 +10,16 @@
     foreach($users as $user){
         echo '<tr id="user'.$user->get_id().'">';
         echo '<td>';
-        echo ('<p>'. $user->get_first_name() .'</p>');
+        echo ('<p>'. htmlspecialchars($user->get_first_name()) .'</p>');
         echo '</td>';
         echo '<td>';
-        echo ('<p>'. $user->get_last_name() .'</p>');
+        echo ('<p>'. htmlspecialchars($user->get_last_name()) .'</p>');
         echo '</td>';
         echo '<td>';
-        echo ('<p>'. $user->get_city() .'</p>');
+        echo ('<p>'. htmlspecialchars($user->get_city()) .'</p>');
         echo '</td>';
         echo '<td>';
-         echo ('exercice cours 3');
+        echo ('exercice cours 3');
         echo '</td>';
         echo '</tr>';
     }   

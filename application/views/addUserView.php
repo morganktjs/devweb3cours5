@@ -2,19 +2,19 @@
     echo '<script type="text/javascript" src="/'.PATH_PUBLIC.'\js\addUser.js"></script>';
 ?>
 
-<form class="needs-validation" novalidate>
+<form class="needs-validation" method="post" action="/user/addUser" novalidate>
   <div class="row">
-      <div class="col-12 col-6-md">
+      <div class="col-12 col-md-6">
           <div class="form-group">
-            <label for="firstName">Prénom</label>
-            <input class="form-control" id="firstName" name="firstName" required>
+            <label for="first_name">Prénom</label>
+            <input class="form-control" id="first_name" name="first_name" required>
             <div class="invalid-feedback">
             Le prénom est requis.
             </div>
           </div>
           <div class="form-group">
-            <label for="lastName">Nom</label>
-            <input class="form-control" id="lastName" name="lastName" required>
+            <label for="last_name">Nom</label>
+            <input class="form-control" id="last_name" name="last_name" required>
             <div class="invalid-feedback">
             Le nom est requis.
             </div>
@@ -27,17 +27,17 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="phone">Téléphone</label>
-            <input type="tel" class="form-control" id="phone" name="phone" required pattern="^[0-9]{7}([0-9]{3})?$">
+            <label for="phone_number">Téléphone</label>
+            <input type="tel" class="form-control" id="phone_number" name="phone_number" required pattern="^[0-9]{7}([0-9]{3})?$">
             <div class="invalid-feedback">
               Le numéro doit être composé de 7 ou 10 chiffres sans espace ou symbole.
             </div>
           </div>
       </div>
-      <div class="col-12 col-6-md">
+      <div class="col-12 col-md-6">
           <div class="form-group">
-            <label for="adress">Adresse</label>
-            <input class="form-control" id="adress" name="adress" required>
+            <label for="address">Adresse</label>
+            <input class="form-control" id="address" name="address" required>
             <div class="invalid-feedback">
             L'adresse est requise.
             </div>
@@ -50,10 +50,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="zipcode">Code Postal</label>
-            <input class="form-control" id="zipcode" name="zipcode" required>
+            <label for="postal_code">Code Postal</label>
+            <input class="form-control" id="postal_code" name="postal_code" required>
             <div class="invalid-feedback">
-              Un code postal est requis. Aucun espace (G5G5G5).
+              Un code postal est requis. Aucun espace (G5Y5G5).
             </div>
           </div>
           <div class="form-group">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-      </div">
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>

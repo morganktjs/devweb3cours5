@@ -11,25 +11,13 @@
         private $postal_code;
         private $age;
 
+        public function __construct(){
+        }
 
-        public function __construct($id_user,
-                $first_name,
-                $last_name,
-                $email,
-                $phone_number,
-                $address,
-                $city,
-                $postal_code,
-                $age){
-            $this->id_user = $id_user;
-            $this->first_name = $first_name;
-            $this->last_name = $last_name;
-            $this->email = $email;
-            $this->phone_number = $phone_number;
-            $this->address = $address;
-            $this->city = $city;
-            $this->postal_code = $postal_code;
-            $this->age = $age;
+        public function set_form_post($post_array){
+            foreach ($post_array as $key => $value){
+                $this->$key = $value;
+            }
         }
 
         public function get_id(){

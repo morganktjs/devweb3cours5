@@ -2,6 +2,8 @@
     require_once(PATH_CORE."/dbModel.php");
     require_once(PATH_DTO."/userDTO.php");
     require_once(PATH_PARSER."/userParser.php");
+    require_once(PATH_EXCEPTION."/noUserFoundException.php");
+
     class UserModel extends dbModel
     {
         const GET_ALL_USERS_PROC_NAME = "get_all_users";
@@ -10,17 +12,27 @@
         const DELETE_USER_PROC_NAME = "delete_user";
 
         public function get_all_users():array{  
+            /*
             $result = $this->mysqli->query("CALL ".self::GET_ALL_USERS_PROC_NAME."()");
 
             $users = array();
             while ($row = $result->fetch_assoc()) {
                 array_push($users, UserParser::parse_sql_row($row));
             }
+            return $users;*/
+            $pdo = $this->GetPDOInstance();
+            $statementHandle = $pdo->query("CALL ".self::GET_ALL_USERS_PROC_NAME."()");
+            $users = $statementHandle->fetchAll(PDO::FETCH_CLASS, 'UserDTO');
+            if($users === false)
+            {
+                throw new NoUserFoundException();
+            }
             return $users;
         }
 
         public function get_user(int $user_id){
             //exercice cours 2
+            /*$result = $this->mysqli->query("CALL ".self::GET_USER_BY_ID_PROC_NAME."()");*/
         }
 
         public function add_user($user){

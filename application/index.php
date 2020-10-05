@@ -10,6 +10,7 @@
     define('PATH_ROUTER', PATH_APPLICATION_ROOT."router");
     define('PATH_PARSER', PATH_APPLICATION_ROOT."parser");
     define('PATH_PUBLIC', "public");
+    define('PATH_EXCEPTION', PATH_APPLICATION_ROOT."exception");
     require(PATH_APPLICATION_ROOT . 'dispatcher.php');
 
 

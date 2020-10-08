@@ -30,7 +30,9 @@
         public function addUser(){
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $this->show_add_user();
-            }else if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            }
+            else if($_SERVER['REQUEST_METHOD'] === 'POST')
+            {
                 $user_to_add_DTO = UserParser::parse_post_form();
                 $this->add_user($user_to_add_DTO);
                 header('Location: /user/show');
@@ -42,16 +44,35 @@
             $user = $this->user_model->delete_user($id_user_to_delete);
         }
 
-        private function show_one_user($id_user){
-            //exercice cours 2
+        private function show_one_user($id_user)
+        {
+            try
+            {
+                $user = $this->user_model->get_user($id_user);
+                $data = array("user"=>$user);
+                $view = new View("userView.php");
+                $content = $view->render($data);
+                $this->render_template_with_content(self::USER_PAGE_TITLE, $content);
+            }
+            catch(NoUserFoundException $e)
+            {
+                $this->render_error("Aucun usager trouvé.", "Aucun usager trouvé.");
+            }
         }
 
         private function show_all_user(){
-            $users = $this->user_model->get_all_users();
-            $data = array("users"=>$users);
-            $view = new View("usersView.php");
-            $content = $view->render($data);
-            echo $this->render_template_with_content(self::USERS_PAGE_TITLE, $content);
+            try
+            {
+                $users = $this->user_model->get_all_users();
+                $data = array("users"=>$users);
+                $view = new View("usersView.php");
+                $content = $view->render($data);
+                echo $this->render_template_with_content(self::USERS_PAGE_TITLE, $content);
+            }
+            catch(NoUserFoundException $e)
+            {
+                $this->render_error("Aucun usager trouvé.", "Aucun usager trouvé.");
+            }
         }
 
         private function show_add_user(){

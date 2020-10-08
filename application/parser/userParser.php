@@ -2,9 +2,8 @@
     require_once(PATH_DTO."/userDTO.php");
     class UserParser {
 
-        public Static function parse_post_form(){
-           
-
+        public Static function parse_post_form()
+        {
             if(isset($_POST["id_user"])){
                 //Error validation
             }

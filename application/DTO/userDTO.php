@@ -9,7 +9,7 @@
         private $address;
         private $city;
         private $postal_code;
-        private $age;
+        private $password;
 
         public function __construct(){
         }
@@ -52,8 +52,8 @@
             return $this->postal_code;
         }
 
-        public function get_age():string{
-            return $this->age;
+        public function get_password():string{
+            return $this->password;
         }
 
        
